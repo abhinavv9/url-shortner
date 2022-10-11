@@ -1,7 +1,11 @@
 package shorten
 
 import (
+	"helpers"
+
 	"time"
+	"github.com/gofiber/fiber/v2"
+	"github.com/asaskevich.govalidator"
 )
 
 type request struct {
@@ -26,6 +30,9 @@ func ShortenURL (c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error":"cannot parse JSON"})
 
 		//implement rate limiting
+		
+		r2 := database.CreateClient(1)
+		defer r2.close()
 
 		//check if the input is an actual URL
 
