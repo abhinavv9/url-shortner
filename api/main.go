@@ -24,7 +24,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	fmt.Println("jdfhjsd")
+	fmt.Println(os.Getenv("APP_PORT"))
 
 	app := fiber.New()
 
